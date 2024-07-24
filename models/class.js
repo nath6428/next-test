@@ -6,7 +6,7 @@ const ClassSchema = new Schema({
         required: [true, 'Tutor is required.']
     },
     time:{
-        type: Number
+        type: Number,
         required: [true, 'Time is required.']
     },
     userId:{
@@ -15,9 +15,7 @@ const ClassSchema = new Schema({
 })
 
 
-const Class = models.Class || new Model("Class", ClassSchema)
+const Class = models.Class || new model("Class", ClassSchema)
 
 export default Class;
 
-
-// Making class prompt 
