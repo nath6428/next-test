@@ -20,14 +20,19 @@
       {
         "name": "next"
       }
-    ]
-  },
+    ],
+    "paths": {
+      "@root/*": ["./*"], 
+      "@utils/*": ["./utils/*"],  
+      "@models/*": ["./models/*"],
+      "@components/*": ["./components/*"]
+    }},
   "include": [
     "next-env.d.ts",
     ".next/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx"
-, "app/api/auth/[...nextauth]/route.js"  ],
+, "app/api/auth/[...nextauth]/route.js", "app/book-class/page.jsx"  ],
   "exclude": [
     "node_modules"
   ]

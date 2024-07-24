@@ -8,8 +8,8 @@ import { signIn, signOut, useSession, getProviders, ClientSafeProvider, LiteralU
 import { BuiltInProviderType } from 'next-auth/providers'
 
 const Nav = () => {
-
-  const [loggedIn, setLoggedIn] = useState(true);
+  
+  const { data: session } = useSession();
   const [providers, setProviders] = useState<Record<LiteralUnion<BuiltInProviderType, string>, ClientSafeProvider> | null>(null);
   const [dropdown, setDropdown] = useState(false);
 
@@ -21,7 +21,7 @@ const Nav = () => {
 
     providersEffect();
     
-  })
+  }, [])
 
   return (
     <nav className='flex justify-between items-center m-16 max-h-1/10'>
@@ -34,16 +34,17 @@ const Nav = () => {
       <Link href='/contact-us'>
         <p>Contact Us</p>
       </Link>
-      <Link href='/book-trial'>
-        <button className="rounded bg-red-500 text-white p-4">Book Trial Class</button>
+      <Link href='/book-class'>
+        <button className="rounded bg-red-500 text-white p-4">Book Class</button>
       </Link>
+      
 
-      {loggedIn ? 
+      {session?.user ? 
       <div className='flex flex-col items-center'>
         <div className='border-2 border-black rounded-full max-w-max'>
           <Image 
             className ='rounded-full'
-            src= '/assets/user.png' 
+            src= {session?.user.image} 
             alt='User Image' 
             height={60} 
             width={60}
@@ -68,7 +69,6 @@ const Nav = () => {
             onClick={() => {
               setDropdown(false);
               signOut();
-              setLoggedIn(false)
             }}>
             Sign Out
           </button>
@@ -77,14 +77,14 @@ const Nav = () => {
       :
       <>
         {providers && 
-          Object.values(providers).map((provider) => {
+          Object.values(providers).map((provider) => (
               <button
                 type="button"
                 key={provider.name}
                 onClick={() => {signIn(provider.id)}}>
                 {provider.name}
               </button>
-            })}
+            ))}
       </>
       }
 

@@ -12,7 +12,7 @@ const RootLayout = ({ children }) => {
   return (
     <html>
         <body>
-          <Provider>
+          <Provider session={null}>
             <Nav />
 
             <div className="w-full h-full">
