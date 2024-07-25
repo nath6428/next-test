@@ -7,14 +7,16 @@ const page = () => {
 
     const { data: session, status } = useSession();
     const [classes, setClasses] = useState([])
-  
+    const ID = session?.user.id || "admin"
     useEffect(() => {
-
+        
         const fetchClasses = async () => {
+            
             try {
-                const res = await fetch('api/class/view')
+                
+                const res = await fetch(`api/class/view/${ID}`);
                 const data = await res.json();
-
+                
                 setClasses(data)
             
             } catch (error) {
