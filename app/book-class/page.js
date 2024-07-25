@@ -8,9 +8,9 @@ import { getSession, useSession } from 'next-auth/react'
 
 const BookClass = () => {
     
-    const [classDetails, setClassDetais] = useState({
-        tutor: "abc",
-        time: "379812"
+    const [classDetails, setClassDetails] = useState({
+        tutor: "",
+        time: ""
     });
     const { data: session, status } = useSession();
 
@@ -33,7 +33,7 @@ const BookClass = () => {
 
 
   return (
-    <ClassForm handleSubmit={handleSubmit} />
+    <ClassForm handleSubmit={handleSubmit} setClassDetails = {setClassDetails} classDetails = {classDetails} />
   )
 }
 

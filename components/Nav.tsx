@@ -31,6 +31,9 @@ const Nav = () => {
       <Link href='/tutors'>
         <p>Tutors</p>
       </Link>
+      <Link href='/my-classes'>
+        <p>My Classes</p>
+      </Link>
       <Link href='/contact-us'>
         <p>Contact Us</p>
       </Link>

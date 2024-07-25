@@ -1,21 +1,20 @@
 "use client"
 
-import React, { useRef } from 'react'
+import React from 'react'
 
-const ClassForm = ({ handleSubmit }) => {
+const ClassForm = ({ handleSubmit, setClassDetails, classDetails }) => {
     
-    const selectedTutor = useRef<HTMLSelectElement>(null);
-
+    
   return (
     <div className='flex justify-center'>
       <div>Book New Class</div>
-      <select id='tutor' ref={selectedTutor}>
-          <option value="a">Tutor1</option>
-          <option value="b">Tutor2</option>
-          <option value="c">Tutor3</option>
-          <option value="d">Tutor4</option>
+      <select id='tutor' onChange={(e) => {setClassDetails({...classDetails, tutor: e.target.value})}}>
+          <option value="Saif">Tutor1</option>
+          <option value="Nathan">Tutor2</option>
+          <option value="Joey">Tutor3</option>
+          <option value="Bartholomew">Tutor4</option>
       </select>
-      <input className='border-black border-16' ></input>
+      <input className='border-black border-16'  onChange={(e) => {setClassDetails({...classDetails, time: e.target.value })}} ></input>
       <button className='border-red-800 bg-red-600' onClick={handleSubmit}>Book</button>
     </div>
   )

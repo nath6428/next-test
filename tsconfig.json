@@ -32,7 +32,7 @@
     ".next/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx"
-, "app/api/auth/[...nextauth]/route.js", "app/book-class/page.jsx"  ],
+, "app/api/auth/[...nextauth]/route.js", "app/api/class/view/route.js", "app/book-class/page.js", "app/my-classes/page.js"  ],
   "exclude": [
     "node_modules"
   ]
